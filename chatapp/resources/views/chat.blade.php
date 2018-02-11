@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<title>Chat room</title>
+@extends('layouts.app')
 
-	<link rel="stylesheet" type="text/css" href="css/app.css">
-</head>
-<body>
 
-	<div id="app">
-		<h1>Chatroom</h1>
-		<chat-log :messages="messages"></chat-log>
-		<chat-composer v-on:messagesent="addMessage"></chat-composer>
+@section('content')
+	<div class="container">
+		
+		<div id="app">
+			<h1>Chatroom</h1>
+			<chat-log :messages="messages"></chat-log>
+			<chat-composer current-user="{{ Auth::user()->name }}" v-on:messagesent="addMessage"></chat-composer>
+		</div>
+
 	</div>
-
-	<script src="js/app.js" charset="utf-8"></script>
-</body>
-</html>
+@endsection

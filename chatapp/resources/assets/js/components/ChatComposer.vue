@@ -10,6 +10,8 @@
 <script>
 	
 export default {
+	props: ['currentUser'],
+
 	 data() {
 	 	return {
 	 		messageText: ''
@@ -19,9 +21,11 @@ export default {
 	 	sendMessage() {
 	 		this.$emit('messagesent', {
 	 			message : this.messageText,
-	 			user : "John Doe"
+	 			user : {
+	 					name: this.currentUser
 	 			}
-	 		);
+	 		});
+
 	 		this.messageText = '';
 	 	}
 	 }
